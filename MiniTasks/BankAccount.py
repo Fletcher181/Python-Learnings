@@ -57,11 +57,17 @@ if __name__ == "__main__":
 
         match transaction:
             case 1:
-                withdraw_amount = float(input("Enter amount to withdraw: "))
-                print(customer.withdraw(withdraw_amount))
+                try:
+                    withdraw_amount = float(input("Enter amount to withdraw: "))
+                    print(customer.withdraw(withdraw_amount))
+                except ValueError:
+                    print("Invalid input!")
             case 2:
-                deposit_amount = float(input("Enter amount to deposit: "))
-                print(customer.deposit(deposit_amount))
+                try:
+                    deposit_amount = float(input("Enter amount to deposit: "))
+                    print(customer.deposit(deposit_amount))
+                except ValueError:
+                    print("Invalid input!")
             case 3:
                 print(customer.viewBalance())
             case 4:
