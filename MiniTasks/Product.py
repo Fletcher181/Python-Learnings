@@ -12,6 +12,8 @@ class Product:
 
     def addProduct(self, product_list):
         product_list.append(self)
+        print("You have successfully added the product!")
+
 
     def removeProduct(self, product_list, target_id):
         for product in product_list:
@@ -19,10 +21,13 @@ class Product:
                 product_list.remove(product)
                 print("You have successfully removed the product!")
 
-    def updateProduct(self, product_list, target_id):
+    def updateProduct(self, product_list, target_id, new_name, new_price, new_quantity):
         for product in product_list:
             if product.id == target_id:
-                product.remove(product)
+                product.name = new_name
+                product.price = new_price
+                product.quantity = new_quantity
+        print("You have succussfully updated the product!")
     
 
 
@@ -45,34 +50,33 @@ if __name__ == "__main__":
         match option:
             case 1:
                 product_id += 1
-                product_name = input("Enter product name: ")
+                product_name = input("\nEnter product name: ")
                 product_price = float(input("Enter product price: "))
                 product_quantity = int(input("Enter product quantity: "))
 
                 p1 = Product(product_id, product_name, product_price, product_quantity)
                 p1.addProduct(product_list)
             case 2:
-                print("Product List")
+                print("\nProduct List")
                 viewProducts(product_list)
                 target_id = int(input("Enter id to delete: "))
                 p1.removeProduct(product_list, target_id)
             case 3:
-                print("Product List")
+                print("\nProduct List")
                 viewProducts(product_list)
                 target_id = int(input("Enter id to update: "))
                 product_name = input("Enter product name: ")
                 product_price = float(input("Enter product price: "))
                 product_quantity = int(input("Enter product quantity: "))
-                p1 = Product(product_id, product_name, product_price, product_quantity)
-                p1.updateProduct(product_list)
+                p1.updateProduct(product_list, target_id, product_name, product_price, product_quantity)
             case 4:
-                print("Product List")
+                print("\nProduct List")
                 viewProducts(product_list)
             case 5:
-                print("Thank you for using!")
+                print("\nThank you for using!")
                 break
             case _:
-                print("Invalid option!")
+                print("\nInvalid option!")
                 continue
 
 
